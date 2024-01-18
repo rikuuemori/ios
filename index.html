@@ -32,12 +32,10 @@
     document.addEventListener('DOMContentLoaded', function() {
       var userAgent = navigator.userAgent;
 
-      // iOSの場合
-      if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+      // iOSの場合またはAndroidの場合
+      if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream ||
+          /Android/.test(userAgent)) {
         document.getElementById('ios-content').style.display = 'block';
-      }
-      // Androidの場合
-      else if (/Android/.test(userAgent)) {
         document.getElementById('android-content').style.display = 'block';
       }
     });
