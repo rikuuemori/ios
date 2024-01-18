@@ -19,26 +19,33 @@
   <div class="ios-only" id="ios-content">
     <!-- iOS向けに表示するコンテンツ -->
     <h1>iOS向けコンテンツ</h1>
-    <p>This content will be visible on iOS devices.</p>
+    <p>This content will be visible only on iOS devices.</p>
   </div>
 
   <div class="android-only" id="android-content">
     <!-- Android向けに表示するコンテンツ -->
     <h1>Android向けコンテンツ</h1>
-    <p>This content will be visible on Android devices.</p>
+    <p>This content will be visible only on Android devices.</p>
   </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-  var userAgent = navigator.userAgent;
+      var userAgent = navigator.userAgent;
 
-  // iOSの場合またはAndroidの場合、またはPCの場合
-  if (/iPad|iPhone|iPod|Android/.test(userAgent) || !(/iPad|iPhone|iPod|Android/.test(userAgent) && !window.MSStream)) {
-    document.getElementById('ios-content').style.display = 'block';
-    document.getElementById('android-content').style.display = 'block';
-  }
-});
-
+      // iOSの場合
+      if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        document.getElementById('ios-content').style.display = 'block';
+      }
+      // Androidの場合
+      else if (/Android/.test(userAgent)) {
+        document.getElementById('android-content').style.display = 'block';
+      }
+      // PCの場合
+      else {
+        document.getElementById('ios-content').style.display = 'block';
+        document.getElementById('android-content').style.display = 'block';
+      }
+    });
   </script>
 </body>
 </html>
