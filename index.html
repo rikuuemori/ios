@@ -39,6 +39,7 @@
       // Androidの場合
       else if (/Android/.test(userAgent)) {
         document.getElementById('android-content').style.display = 'block';
+        document.getElementById('ios-content').style.display = 'none'; // iOS向けコンテンツを非表示
       }
       // PCの場合
       else {
