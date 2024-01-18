@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Device-Specific Content</title>
+  <style>
+    .ios-only {
+      display: none;
+    }
+
+    .android-only {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ios-only" id="ios-content">
+    <!-- iOS向けに表示するコンテンツ -->
+    <h1>iOS向けコンテンツ</h1>
+    <p>This content will be visible only on iOS devices.</p>
+  </div>
+
+  <div class="android-only" id="android-content">
+    <!-- Android向けに表示するコンテンツ -->
+    <h1>Android向けコンテンツ</h1>
+    <p>This content will be visible only on Android devices.</p>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var userAgent = navigator.userAgent;
+
+      // iOSの場合
+      if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        document.getElementById('ios-content').style.display = 'block';
+      }
+      // Androidの場合
+      else if (/Android/.test(userAgent)) {
+        document.getElementById('android-content').style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
